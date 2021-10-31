@@ -241,15 +241,7 @@ void mousePressed()
       currentLetter = 'R';
       zoomR = true;
     }
-  }else{
-    //if we're already zoomed, then select a character and set zoom to false
-    if(zoomL || zoomM || zoomR){
-      zoomL = false;
-      zoomM = false;
-      zoomR = false;
-    }
-    
-    
+  }else{    
     if(didMouseClick(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.28)){//top left
       if(zoomL){
         currentTyped+="q";
@@ -265,6 +257,7 @@ void mousePressed()
         currentTyped+="w";
       }else if(zoomM){
         currentTyped+="t";
+        currentLetter = 't';
       }else if(zoomR){
         currentTyped+="i";
       }
@@ -340,6 +333,12 @@ void mousePressed()
       }
     }
     
+    //if we're already zoomed, then select a character and set zoom to false
+    if(zoomL || zoomM || zoomR){
+      zoomL = false;
+      zoomM = false;
+      zoomR = false;
+    }
   }
   
   
