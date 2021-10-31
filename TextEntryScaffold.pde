@@ -17,6 +17,7 @@ final int DPIofYourDeviceScreen = 216; //you will need to look up the DPI or PPI
 final float sizeOfInputArea = DPIofYourDeviceScreen*1; //aka, 1.0 inches square!
 PImage watch;
 PImage finger;
+PImage keyboard;
 
 //Variables for my silly implementation. You can delete this:
 char currentLetter = 'a';
@@ -26,6 +27,7 @@ void setup()
 {
   //noCursor();
   watch = loadImage("watchhand3smaller.png");
+  keyboard = loadImage("keyboard.png");
   //finger = loadImage("pngeggSmaller.png"); //not using this
   phrases = loadStrings("phrases2.txt"); //load the phrase set into memory
   Collections.shuffle(Arrays.asList(phrases), new Random()); //randomize the order of the phrases with no seed
@@ -177,6 +179,8 @@ void draw()
       textAlign(CENTER);
       fill(200);
       text("" + currentLetter, width/2, height/2-sizeOfInputArea/2.6); //draw current letter
+      
+      image(keyboard, width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea/2);
     }
   }
  
