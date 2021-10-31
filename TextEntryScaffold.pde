@@ -38,9 +38,9 @@ void setup()
 }
 
 //state to know if we are zoomed or not
-boolean zoomA = false;
-boolean zoomB = false;
-boolean zoomC = false;
+boolean zoomL = false;
+boolean zoomM = false;
+boolean zoomR = false;
 
 //You can modify anything in here. This is just a basic implementation.
 void draw()
@@ -100,12 +100,71 @@ void draw()
     fill(255);
     text("NEXT > ", 650, 650); //draw next label
     
-    if(zoomA){
+    //conditional rendering for different zooms
+    if(zoomL || zoomM || zoomR){
+     fill(255, 255, 0); //red button
+      rect(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.28); //draw left red button
+      fill(0, 255, 255); //green button
+      rect((width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.28); //draw right green button
+      fill(255, 0, 255); //blue button
+      rect((width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.28); //draw right green button
       
-    }else if(zoomB){
+      fill(255, 0, 255); //blue button
+      rect(width/2-sizeOfInputArea/2, height/2 - sizeOfInputArea*.05, sizeOfInputArea/3, sizeOfInputArea*.28); //draw left red button
+      fill(255, 255, 0); //red button
+      rect((width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05, sizeOfInputArea/3, sizeOfInputArea*.28); //draw right green button
+      fill(0, 255, 255); //green button
+      rect((width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05, sizeOfInputArea/3, sizeOfInputArea*.28); //draw right green button
       
-    }else if(zoomC){
+      fill(0, 255, 255); //green button
+      rect(width/2-sizeOfInputArea/2, height/2 + sizeOfInputArea*.05 + sizeOfInputArea*.18, sizeOfInputArea/3, sizeOfInputArea*.28); //draw left red button
+      fill(255, 0, 255); //blue button
+      rect((width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.05 + sizeOfInputArea*.18, sizeOfInputArea/3, sizeOfInputArea*.28); //draw right green button
+      fill(255, 255, 0); //red button
+      rect((width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.05 + sizeOfInputArea*.18, sizeOfInputArea/3, sizeOfInputArea*.28); //draw right green button
+    }
+
+    if(zoomL){
+      fill(0, 0, 0);
+      text("Q", width/2 - sizeOfInputArea/2, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      text("W", (width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      text("E", (width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
       
+      text("A", width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      text("S", (width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      text("D", (width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      
+      text("Z", width/2 - sizeOfInputArea/2, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      text("X", (width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      text("C", (width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      
+      
+    }else if(zoomM){
+      fill(0, 0, 0);
+      text("R", width/2 - sizeOfInputArea/2, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      text("T", (width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      text("Y", (width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      
+      text("F", width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      text("G", (width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      text("H", (width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      
+      text("V", width/2 - sizeOfInputArea/2, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      text("B", (width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      text("N", (width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+    }else if(zoomR){
+      fill(0, 0, 0);
+      text("U", width/2 - sizeOfInputArea/2, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      text("I", (width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      text("O", (width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      
+      text("J", width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      text("K", (width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      text("L", (width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      
+      text("M", width/2 - sizeOfInputArea/2, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      text("", (width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      text("P", (width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
     }
     else{// no zoom
       //example design draw code
@@ -117,7 +176,7 @@ void draw()
       rect((width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84); //draw right green button
       textAlign(CENTER);
       fill(200);
-      text("" + currentLetter, width/2, height/2-sizeOfInputArea/2.5); //draw current letter
+      text("" + currentLetter, width/2, height/2-sizeOfInputArea/2.6); //draw current letter
     }
   }
  
@@ -132,6 +191,7 @@ boolean didMouseClick(float x, float y, float w, float h) //simple function to d
 }
 
 
+boolean currentlyTouch = false;
 void mousePressed()
 {
   /*
@@ -159,15 +219,129 @@ void mousePressed()
       currentTyped+=currentLetter;
   }*/
   
-  if (didMouseClick(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/2+sizeOfInputArea/2, sizeOfInputArea/3, sizeOfInputArea/2)) //check if click in left button
-  {
-    //left third
+  //if we aren't currently zoomed, check for zoom zones
+  if(!zoomL && !zoomM && !zoomR){
+    if (didMouseClick(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84)) //check if click in left button
+    {
+      //left third
+      currentLetter = 'L';
+      zoomL = true;
+    }
+    
+    if (didMouseClick((width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84)) //check if click in left button
+    {
+      //middle third
+      currentLetter = 'M';
+      zoomM = true;
+    }
+    
+    if (didMouseClick((width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84)) //check if click in left button
+    {
+      //right third
+      currentLetter = 'R';
+      zoomR = true;
+    }
+  }else{
+    //if we're already zoomed, then select a character and set zoom to false
+    if(zoomL || zoomM || zoomR){
+      zoomL = false;
+      zoomM = false;
+      zoomR = false;
+    }
+    
+    
+    if(didMouseClick(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.28)){//top left
+      if(zoomL){
+        currentTyped+="q";
+      }else if(zoomM){
+        currentTyped+="r";
+      }else if(zoomR){
+        currentTyped+="u";
+      }
+    }
+    
+    if(didMouseClick((width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.28)){//top middle
+      if(zoomL){
+        currentTyped+="w";
+      }else if(zoomM){
+        currentTyped+="t";
+      }else if(zoomR){
+        currentTyped+="i";
+      }
+    }
+    
+    if(didMouseClick((width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.28)){//top right
+      if(zoomL){
+        currentTyped+="e";
+      }else if(zoomM){
+        currentTyped+="y";
+      }else if(zoomR){
+        currentTyped+="o";
+      }
+    }
+    
+    if(didMouseClick(width/2-sizeOfInputArea/2, height/2 - sizeOfInputArea*.05, sizeOfInputArea/3, sizeOfInputArea*.28)){//middle left
+      if(zoomL){
+        currentTyped+="a";
+      }else if(zoomM){
+        currentTyped+="f";
+      }else if(zoomR){
+        currentTyped+="j";
+      }
+    }
+    
+    if(didMouseClick((width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05, sizeOfInputArea/3, sizeOfInputArea*.28)){//middle middle
+      if(zoomL){
+        currentTyped+="s";
+      }else if(zoomM){
+        currentTyped+="g";
+      }else if(zoomR){
+        currentTyped+="k";
+      }
+    }
+    
+    if(didMouseClick((width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05, sizeOfInputArea/3, sizeOfInputArea*.28)){//middle right
+      if(zoomL){
+        currentTyped+="d";
+      }else if(zoomM){
+        currentTyped+="h";
+      }else if(zoomR){
+        currentTyped+="l";
+      }
+    }
+    
+    if(didMouseClick(width/2-sizeOfInputArea/2, height/2 + sizeOfInputArea*.05 + sizeOfInputArea*.18, sizeOfInputArea/3, sizeOfInputArea*.28)){//botto  left
+      if(zoomL){
+        currentTyped+="z";
+      }else if(zoomM){
+        currentTyped+="v";
+      }else if(zoomR){
+        currentTyped+="m";
+      }
+    }
+    
+    if(didMouseClick((width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.05 + sizeOfInputArea*.18, sizeOfInputArea/3, sizeOfInputArea*.28)){//bottom middle
+      if(zoomL){
+        currentTyped+="x";
+      }else if(zoomM){
+        currentTyped+="b";
+      }else if(zoomR){
+        //currentTyped+="";
+      }
+    }
+    
+    if(didMouseClick((width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.05 + sizeOfInputArea*.18, sizeOfInputArea/3, sizeOfInputArea*.28)){//bottom right
+       if(zoomL){
+        currentTyped+="c";
+      }else if(zoomM){
+        currentTyped+="n";
+      }else if(zoomR){
+        currentTyped+="p";
+      }
+    }
+    
   }
   
-  if (didMouseClick(width/2-sizeOfInputArea/6, height/2-sizeOfInputArea/2+sizeOfInputArea/2, sizeOfInputArea/6, sizeOfInputArea/2)) //check if click in left button
-  {
-    //left third
-  }
   
 
   //You are allowed to have a next button outside the 1" area
@@ -175,6 +349,11 @@ void mousePressed()
   {
     nextTrial(); //if so, advance to next trial
   }
+  
+}
+
+//on mouse release, check for swipes
+void mouseReleased(){
   
 }
 
