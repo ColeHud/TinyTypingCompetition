@@ -38,9 +38,9 @@ void setup()
 }
 
 //state to know if we are zoomed or not
-int zoomA = 0;
-int zoomB = 0;
-int zoomC = 0;
+boolean zoomA = false;
+boolean zoomB = false;
+boolean zoomC = false;
 
 //You can modify anything in here. This is just a basic implementation.
 void draw()
@@ -99,15 +99,26 @@ void draw()
     rect(600, 600, 200, 200); //draw next button
     fill(255);
     text("NEXT > ", 650, 650); //draw next label
-
-    //example design draw code
-    fill(255, 0, 0); //red button
-    rect(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/2+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2); //draw left red button
-    fill(0, 255, 0); //green button
-    rect(width/2-sizeOfInputArea/2+sizeOfInputArea/2, height/2-sizeOfInputArea/2+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2); //draw right green button
-    textAlign(CENTER);
-    fill(200);
-    text("" + currentLetter, width/2, height/2-sizeOfInputArea/4); //draw current letter
+    
+    if(zoomA){
+      
+    }else if(zoomB){
+      
+    }else if(zoomC){
+      
+    }
+    else{// no zoom
+      //example design draw code
+      fill(255, 0, 0); //red button
+      rect(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84); //draw left red button
+      fill(0, 255, 0); //green button
+      rect((width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84); //draw right green button
+      fill(0, 0, 255); //blue button
+      rect((width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84); //draw right green button
+      textAlign(CENTER);
+      fill(200);
+      text("" + currentLetter, width/2, height/2-sizeOfInputArea/2.5); //draw current letter
+    }
   }
  
  
@@ -123,6 +134,7 @@ boolean didMouseClick(float x, float y, float w, float h) //simple function to d
 
 void mousePressed()
 {
+  /*
   if (didMouseClick(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/2+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2)) //check if click in left button
   {
     currentLetter --;
@@ -145,7 +157,18 @@ void mousePressed()
       currentTyped = currentTyped.substring(0, currentTyped.length()-1);
     else if (currentLetter!='`') //if not any of the above cases, add the current letter to the typed string
       currentTyped+=currentLetter;
+  }*/
+  
+  if (didMouseClick(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/2+sizeOfInputArea/2, sizeOfInputArea/3, sizeOfInputArea/2)) //check if click in left button
+  {
+    //left third
   }
+  
+  if (didMouseClick(width/2-sizeOfInputArea/6, height/2-sizeOfInputArea/2+sizeOfInputArea/2, sizeOfInputArea/6, sizeOfInputArea/2)) //check if click in left button
+  {
+    //left third
+  }
+  
 
   //You are allowed to have a next button outside the 1" area
   if (didMouseClick(600, 600, 200, 200)) //check if click is in next button
