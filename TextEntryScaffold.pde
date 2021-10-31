@@ -180,7 +180,14 @@ void draw()
       fill(200);
       text("" + currentLetter, width/2, height/2-sizeOfInputArea/2.6); //draw current letter
       
-      image(keyboard, width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea/2);
+      float watchscale = DPIofYourDeviceScreen/430.0; //normalizes the image size
+      pushMatrix();
+      translate(width/2, height/2 + sizeOfInputArea*.1);
+      scale(watchscale);
+      imageMode(CENTER);
+      image(keyboard, 0, 0);
+      popMatrix();
+      //image(keyboard, width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea/2);
     }
   }
  
