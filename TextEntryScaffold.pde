@@ -192,8 +192,13 @@ boolean didMouseClick(float x, float y, float w, float h) //simple function to d
 
 
 boolean currentlyTouch = false;
+float startTouchX = 0;
+float startTouchY = 0;
 void mousePressed()
 {
+  startTouchX = mouseX;
+  startTouchY = mouseY;
+  currentlyTouch = true;
   /*
   if (didMouseClick(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/2+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2)) //check if click in left button
   {
@@ -218,6 +223,29 @@ void mousePressed()
     else if (currentLetter!='`') //if not any of the above cases, add the current letter to the typed string
       currentTyped+=currentLetter;
   }*/
+  
+  
+  
+}
+
+//on mouse release, check for swipes
+void mouseReleased(){
+  //decide if swipe or touch
+  if(currentlyTouch){
+    if(mouseX - startTouchX > sizeOfInputArea/2){//spacebar
+      currentTyped = currentTyped + " ";
+      currentlyTouch = false;
+      return;
+    }else if(startTouchX - mouseX > sizeOfInputArea/2){//backspace
+      if(currentTyped.length() > 0){
+        currentTyped = currentTyped.substring(0, currentTyped.length()-1);
+      }
+      currentlyTouch = false;
+      return;
+    }
+  }
+  
+  
   
   //if we aren't currently zoomed, check for zoom zones
   if(!zoomL && !zoomM && !zoomR){
@@ -340,20 +368,12 @@ void mousePressed()
       zoomR = false;
     }
   }
-  
-  
 
   //You are allowed to have a next button outside the 1" area
   if (didMouseClick(600, 600, 200, 200)) //check if click is in next button
   {
     nextTrial(); //if so, advance to next trial
   }
-  
-}
-
-//on mouse release, check for swipes
-void mouseReleased(){
-  
 }
 
 
