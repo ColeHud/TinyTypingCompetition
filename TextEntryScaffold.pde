@@ -13,7 +13,7 @@ float lettersExpectedTotal = 0; //a running total of the number of letters expec
 float errorsTotal = 0; //a running total of the number of errors (when hitting next)
 String currentPhrase = ""; //the current target phrase
 String currentTyped = ""; //what the user has typed so far
-final int DPIofYourDeviceScreen = 216; //you will need to look up the DPI or PPI of your device to make sure you get the right scale. Or play around with this value.
+final int DPIofYourDeviceScreen = 538; //you will need to look up the DPI or PPI of your device to make sure you get the right scale. Or play around with this value.
 final float sizeOfInputArea = DPIofYourDeviceScreen*1; //aka, 1.0 inches square!
 PImage watch;
 PImage finger;
@@ -34,7 +34,7 @@ void setup()
   //Collections.shuffle(Arrays.asList(phrases), new Random(100)); //randomize the order of the phrases with seed 100; same order every time, useful for testing
  
   orientation(LANDSCAPE); //can also be PORTRAIT - sets orientation on android device
-  size(800, 480); //Sets the size of the app. You should modify this to your device's native size. Many phones today are 1080 wide by 1920 tall.
+  size(2880, 1440); //Sets the size of the app. You should modify this to your device's native size. Many phones today are 1080 wide by 1920 tall.
   textFont(createFont("Arial", 50)); //set the font to arial 24. Creating fonts is expensive, so make difference sizes once in setup, not draw
   noStroke(); //my code doesn't use any strokes
 }
@@ -127,46 +127,11 @@ void draw()
     }
 
     if(zoomL){
-      fill(0, 0, 0);
-      text("Q", width/2 - sizeOfInputArea/2, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      text("W", (width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      text("E", (width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      
-      text("A", width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      text("S", (width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      text("D", (width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      
-      text("Z", width/2 - sizeOfInputArea/2, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
-      text("X", (width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
-      text("C", (width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
-      
-      
+      displayZoom("QWEASDZXC");
     }else if(zoomM){
-      fill(0, 0, 0);
-      text("R", width/2 - sizeOfInputArea/2, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      text("T", (width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      text("Y", (width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      
-      text("F", width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      text("G", (width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      text("H", (width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      
-      text("V", width/2 - sizeOfInputArea/2, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
-      text("B", (width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
-      text("N", (width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      displayZoom("RTYFGHVBN");
     }else if(zoomR){
-      fill(0, 0, 0);
-      text("U", width/2 - sizeOfInputArea/2, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      text("I", (width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      text("O", (width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
-      
-      text("J", width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      text("K", (width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      text("L", (width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
-      
-      text("M", width/2 - sizeOfInputArea/2, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
-      text("", (width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
-      text("P", (width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      displayZoom("UIOJKLM P");
     }
     else{// no zoom
       //example design draw code
@@ -178,7 +143,6 @@ void draw()
       rect((width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84); //draw right green button
       textAlign(CENTER);
       fill(200);
-      text("" + currentLetter, width/2, height/2-sizeOfInputArea/2.6); //draw current letter
       
       float watchscale = DPIofYourDeviceScreen/430.0; //normalizes the image size
       pushMatrix();
@@ -189,10 +153,39 @@ void draw()
       popMatrix();
       //image(keyboard, width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea/2);
     }
+    
+    // Printing the current string in the app
+    if(currentTyped.length() < 15){
+      fill(255,255,255);
+      textAlign(CENTER);
+      text("" + currentTyped, width/2, height/2-sizeOfInputArea/2.6); //draw current letter
+    } else {
+      fill(255,255,255);
+      textAlign(CENTER);
+      text("" + currentTyped.substring(currentTyped.length()-15, currentTyped.length()), width/2, height/2-sizeOfInputArea/2.6); //draw current letter  
+    }
+    
   }
  
  
   //drawFinger(); //no longer needed as we'll be deploying to an actual touschreen device
+}
+
+void displayZoom(String s){
+      fill(0, 0, 0);
+      text(s.charAt(0), width/2 - sizeOfInputArea/2, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      text(s.charAt(1), (width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      text(s.charAt(2), (width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3 + sizeOfInputArea*.18); //draw current letter
+      
+      text(s.charAt(3), width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      text(s.charAt(4), (width/2) - sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      text(s.charAt(5), (width/2) + sizeOfInputArea/6, height/2 - sizeOfInputArea*.05 + sizeOfInputArea*.18); //draw current letter
+      
+      text(s.charAt(6), width/2 - sizeOfInputArea/2, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      text(s.charAt(7), (width/2) - sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      text(s.charAt(8), (width/2) + sizeOfInputArea/6, height/2 + sizeOfInputArea*.25 + sizeOfInputArea*.18); //draw current letter
+      
+     
 }
 
 //my terrible implementation you can entirely replace
@@ -242,16 +235,23 @@ void mousePressed()
 //on mouse release, check for swipes
 void mouseReleased(){
   //decide if swipe or touch
+  float halfScreenArea = sizeOfInputArea / 2;
   if(currentlyTouch){
-    if(mouseX - startTouchX > sizeOfInputArea/2){//spacebar
+    if(mouseX - startTouchX > halfScreenArea){//spacebar
       currentTyped = currentTyped + " ";
       currentlyTouch = false;
       return;
-    }else if(startTouchX - mouseX > sizeOfInputArea/2){//backspace
+    }else if(startTouchX - mouseX > halfScreenArea){//backspace
       if(currentTyped.length() > 0){
         currentTyped = currentTyped.substring(0, currentTyped.length()-1);
       }
       currentlyTouch = false;
+      return;
+    }
+    else if(mouseY - startTouchY > halfScreenArea){
+      zoomL = false;
+      zoomR = false;
+      zoomM = false;
       return;
     }
   }
@@ -263,21 +263,21 @@ void mouseReleased(){
     if (didMouseClick(width/2-sizeOfInputArea/2, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84)) //check if click in left button
     {
       //left third
-      currentLetter = 'L';
+      //currentLetter = 'L';
       zoomL = true;
     }
     
     if (didMouseClick((width/2) - sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84)) //check if click in left button
     {
       //middle third
-      currentLetter = 'M';
+      //currentLetter = 'M';
       zoomM = true;
     }
     
     if (didMouseClick((width/2) + sizeOfInputArea/6, height/2-sizeOfInputArea/3, sizeOfInputArea/3, sizeOfInputArea*.84)) //check if click in left button
     {
       //right third
-      currentLetter = 'R';
+      //currentLetter = 'R';
       zoomR = true;
     }
   }else{    
@@ -373,7 +373,7 @@ void mouseReleased(){
     }
     
     //if we're already zoomed, then select a character and set zoom to false
-    if(zoomL || zoomM || zoomR){
+    if( (zoomL || zoomM || zoomR) && didMouseClick(width/2 - sizeOfInputArea/2, height/2 - sizeOfInputArea/2, sizeOfInputArea, sizeOfInputArea*.16)){
       zoomL = false;
       zoomM = false;
       zoomR = false;
